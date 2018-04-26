@@ -8,7 +8,8 @@ describe "Scrabble" do
 	it "capturar palabra valida" do
 		scrabble = Scrabble.new
 		scrabble.capturarPalabra "BEA"
-  	scrabble.verificarPalabraIngresada.should == true
+		resultado = scrabble.verificarPalabraIngresada
+  	resultado.should == true
   end
 
 end
