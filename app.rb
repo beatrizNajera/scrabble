@@ -8,7 +8,8 @@ get '/' do
 end
 
 post '/validarPalabra' do
-	@palabraIngresada = "BEA"
+	@palabraIngresada = params["palabraIngresada"]
+	@@scrabble.capturarPalabra params["palabraIngresada"]
 	@letrasIniciales=@@scrabble.obtenerLetrasIniciales
 	 erb :scrabble 
 end
