@@ -26,4 +26,11 @@ describe "Scrabble" do
   	resultado.should == false
   end
 
+	it "Validar que pueda usar una sola vez las letras validas" do
+		scrabble = Scrabble.new
+		scrabble.capturarPalabra "BEBE"
+		resultado = scrabble.verificarPalabraIngresada
+  	resultado.should == false
+  end
+
 end
