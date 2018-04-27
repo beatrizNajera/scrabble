@@ -47,6 +47,9 @@ class Scrabble
 	end
 
 	def obtenerPuntaje
+		if verificarPalabraIngresada == false
+			return -1
+		end
 		letrasIngresadas = @palabra.scan /\w/
 		puntaje = 0
 		letrasIngresadas.each do |letra|

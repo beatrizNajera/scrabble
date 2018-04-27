@@ -51,4 +51,13 @@ describe "Scrabble" do
 		puntaje.should == 13
   end
 
+	it "Calcular puntaje unicamente cuando palabra ingresada sea valida" do
+		scrabble = Scrabble.new
+		scrabble.capturarPalabra "ARBOL"
+		resultado = scrabble.verificarPalabraIngresada
+		puntaje = scrabble.obtenerPuntaje
+  	resultado.should == false
+		puntaje.should == -1
+  end
+
 end
