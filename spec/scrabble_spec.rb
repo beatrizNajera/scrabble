@@ -33,6 +33,8 @@ describe "Scrabble" do
 		scrabble = Scrabble.new
 		scrabble.capturarPalabra "BEBE"
 		resultado = scrabble.verificarPalabraIngresada
+		motivoPalabraNoValida = scrabble.obtenerMotivoPalabraNoValida
+		motivoPalabraNoValida.should == "No puede utilizar mas letras de las disponibles"
   	resultado.should == false
   end
 
@@ -41,6 +43,8 @@ describe "Scrabble" do
 		scrabble.capturarPalabra "BEA"
 		resultado = scrabble.verificarPalabraIngresada
 		puntaje = scrabble.obtenerPuntaje
+		motivoPalabraNoValida = scrabble.obtenerMotivoPalabraNoValida
+		motivoPalabraNoValida.should == ""
   	resultado.should == true
 		puntaje.should == 10
   end
@@ -58,8 +62,10 @@ describe "Scrabble" do
 		scrabble = Scrabble.new
 		scrabble.capturarPalabra "ARBOL"
 		resultado = scrabble.verificarPalabraIngresada
+		motivoPalabraNoValida = scrabble.obtenerMotivoPalabraNoValida
 		puntaje = scrabble.obtenerPuntaje
   	resultado.should == false
+		motivoPalabraNoValida.should == "No puede utilizar mas letras de las disponibles"
 		puntaje.should == -1
   end
 
@@ -70,6 +76,17 @@ describe "Scrabble" do
 		puntaje = scrabble.obtenerPuntaje
   	resultado.should == true
 		puntaje.should == 10
+  end
+
+  it "Valida que palabra BCA no existe" do
+		scrabble = Scrabble.new
+		scrabble.capturarPalabra "BCA"
+		resultado = scrabble.verificarPalabraIngresada
+		motivoPalabraNoValida = scrabble.obtenerMotivoPalabraNoValida
+		puntaje = scrabble.obtenerPuntaje
+  	resultado.should == false
+		motivoPalabraNoValida == "La palabra no existe en la RAE"
+		puntaje.should == -1
   end
 
 end

@@ -4,6 +4,10 @@ class Scrabble
 		@palabra = ""
 		@puntajes = [1,8,3,2,1]
 		@letrasIniciales = %w{A B C D E}
+		@palabrasValidas = %w{BEA CAE CABE CEDA CEBA DA DEBA DEA BECA}
+		@usoCorrectamenteSetDeLetras = false
+		@usoCorrectamenteCantidadDeSetDeLetras = false
+		@existePalabraIngresada = false
 	end
 
 	def obtenerLetrasIniciales
@@ -23,10 +27,11 @@ class Scrabble
 		letrasIniciales = obtenerLetrasIniciales.scan /\w/
 
 		
-		usoCorrectamenteSetDeLetras = verificarUsoDeSetDeLetras letrasIngresadas
-		usoCorrectamenteCantidadDeSetDeLetras = verificarCantidadDeSetDeLetras letrasIngresadas, letrasIniciales
-
-		if usoCorrectamenteSetDeLetras == false or usoCorrectamenteCantidadDeSetDeLetras == false
+		@usoCorrectamenteSetDeLetras = verificarUsoDeSetDeLetras letrasIngresadas
+		@usoCorrectamenteCantidadDeSetDeLetras = verificarCantidadDeSetDeLetras letrasIngresadas, letrasIniciales
+		@existePalabraIngresada = verificarSiPalabraIngresadaExiste
+	
+		if @usoCorrectamenteSetDeLetras == false or @usoCorrectamenteCantidadDeSetDeLetras == false or @existePalabraIngresada == false
 			return false
 		end
 
@@ -51,6 +56,27 @@ class Scrabble
 			end
 		end
 		return true
+	end
+
+	def verificarSiPalabraIngresadaExiste
+		cantidadEncontrada = @palabrasValidas.count(@palabra)
+		if cantidadEncontrada > 0
+			return true
+		else
+			return false
+		end
+	end
+
+	def obtenerMotivoPalabraNoValida
+		if @usoCorrectamenteSetDeLetras == false
+			return "No puede utilizar mas letras de las disponibles"
+		elsif @usoCorrectamenteCantidadDeSetDeLetras == false 
+			return "No puede utilizar mas letras de las disponibles"
+		elsif @existePalabraIngresada == false		
+			return "La palabra no existe en la RAE"
+		else
+			return ""
+		end
 	end
 
 	def obtenerPuntaje
