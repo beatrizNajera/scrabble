@@ -9,4 +9,8 @@ Scenario: Captura palabra
 	When Ingreso "BEA"
 	Then Veo "BEA"
 
+Scenario: Verificar palabra no valida
+	Given Voy a Inicio
+	When Ingreso "ARBOL"
+	Then Veo "La palabra contiene letra no valida"
 
