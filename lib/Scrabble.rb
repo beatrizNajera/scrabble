@@ -8,7 +8,15 @@ class Scrabble
 	def capturarPalabra palabra
 		@palabra = palabra
 	end
+
 	def verificarPalabraIngresada
-		true
+		letrasIngresadas = @palabra.scan /\w/
+		letrasIngresadas.each do |letra|
+			contieneLetra = obtenerLetrasIniciales.include? letra
+			if contieneLetra == false
+				return false
+			end
+		end
+		return true
 	end
 end
