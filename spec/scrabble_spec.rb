@@ -1,9 +1,12 @@
 require "./lib/Scrabble.rb"
 
 describe "Scrabble" do
-  it "muestra letras iniciales" do
+  it "muestra letras iniciales y valores iniciales" do
 		scrabble = Scrabble.new
-  	scrabble.obtenerLetrasIniciales.should == "A B C D E"
+		letrasIniciales = scrabble.obtenerLetrasIniciales
+		valoresIniciales = scrabble.obtenerValoresIniciales
+  	letrasIniciales.should == "A B C D E"
+  	valoresIniciales.should == "1 8 3 2 1"
   end
 	it "capturar palabra valida BEA" do
 		scrabble = Scrabble.new

@@ -1,12 +1,19 @@
 class Scrabble
+
 	def initialize 
 		@palabra = ""
 		@puntajes = [1,8,3,2,1]
 		@letrasIniciales = %w{A B C D E}
 	end
+
 	def obtenerLetrasIniciales
 		@letrasIniciales.join " "
   end
+
+	def obtenerValoresIniciales
+		@puntajes.join " "
+  end
+
 	def capturarPalabra palabra
 		@palabra = palabra.upcase
 	end
