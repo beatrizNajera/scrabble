@@ -14,7 +14,7 @@ post '/validarPalabra' do
 	if @@scrabble.verificarPalabraIngresada
 		@mensaje = "Ok"
 	else
-    @mensaje = "La palabra contiene letra no valida"
+    @mensaje = "No puede utilizar mas letras de las disponibles"
 	end
 	erb :scrabble 
 end

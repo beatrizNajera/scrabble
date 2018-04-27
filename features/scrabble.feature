@@ -12,10 +12,11 @@ Scenario: Captura palabra
 Scenario: Verificar palabra no valida
 	Given Voy a Inicio
 	When Ingreso "ARBOL"
-	Then Veo "La palabra contiene letra no valida"
+	Then Veo "No puede utilizar mas letras de las disponibles"
 
 Scenario: Verificar palabra valida
 	Given Voy a Inicio
 	When Ingreso "BECA"
 	Then Veo "Ok"
+
 
