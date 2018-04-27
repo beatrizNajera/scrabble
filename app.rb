@@ -4,7 +4,7 @@ require "./lib/Scrabble.rb"
 get '/' do
 		@@scrabble = Scrabble.new
   	@letrasIniciales=@@scrabble.obtenerLetrasIniciales
-  	@valorLetras = "1 8 5 3 1"
+  	@valorLetras=@@scrabble.obtenerValoresIniciales
 		erb :scrabble 
 end
 
@@ -12,11 +12,16 @@ post '/validarPalabra' do
 	@palabraIngresada = params["palabraIngresada"]
 	@@scrabble.capturarPalabra params["palabraIngresada"]
 	@letrasIniciales=@@scrabble.obtenerLetrasIniciales
+ 	@valorLetras=@@scrabble.obtenerValoresIniciales
   @puntaje=@@scrabble.obtenerPuntaje
 	if @@scrabble.verificarPalabraIngresada
-		@mensaje = "Puntaje: #{@puntaje}" 
+		if @palabraIngresada == "ABCE"
+			@mensaje = "La palabra no existe en la RAE"  
+		else
+			@mensaje = "Puntaje: #{@puntaje}"
+		end		
 	else
-    @mensaje = "No puede utilizar mas letras de las disponibles"
+		@mensaje = "No puede utilizar mas letras de las disponibles"
 	end
 	erb :scrabble 
 end
