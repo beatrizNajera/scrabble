@@ -33,4 +33,22 @@ describe "Scrabble" do
   	resultado.should == false
   end
 
+	it "Calcular puntaje palaba ingresada BEA" do
+		scrabble = Scrabble.new
+		scrabble.capturarPalabra "BEA"
+		resultado = scrabble.verificarPalabraIngresada
+		puntaje = scrabble.obtenerPuntaje
+  	resultado.should == true
+		puntaje.should == 10
+  end
+
+	it "Calcular puntaje palaba ingresada BECA" do
+		scrabble = Scrabble.new
+		scrabble.capturarPalabra "BECA"
+		resultado = scrabble.verificarPalabraIngresada
+		puntaje = scrabble.obtenerPuntaje
+  	resultado.should == true
+		puntaje.should == 13
+  end
+
 end

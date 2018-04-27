@@ -1,9 +1,11 @@
 class Scrabble
 	def initialize 
 		@palabra = ""
+		@puntajes = [1,8,3,2,1]
+		@letrasIniciales = %w{A B C D E}
 	end
 	def obtenerLetrasIniciales
-		"A B C D E"
+		@letrasIniciales.join " "
   end
 	def capturarPalabra palabra
 		@palabra = palabra
@@ -42,6 +44,16 @@ class Scrabble
 			end
 		end
 		return true
+	end
+
+	def obtenerPuntaje
+		letrasIngresadas = @palabra.scan /\w/
+		puntaje = 0
+		letrasIngresadas.each do |letra|
+			indiceLetra = @letrasIniciales.index letra
+			puntaje += @puntajes[indiceLetra]
+		end
+		return puntaje
 	end
 
 end
