@@ -19,9 +19,16 @@ Scenario: Verificar palabra valida
 	Given Voy a Inicio
 	When Ingreso "BECA"
 	Then Veo "Puntaje palabra: 13"
-	And Veo "Puntaje acumulado: 20"
+	And Veo "Puntaje acumulado: 13"
 
 Scenario: Verificar palabra no valida
 	Given Voy a Inicio
 	When Ingreso "ABCE"
 	Then Veo "La palabra no existe en la RAE"
+
+Scenario: Verificar palabra valida
+	Given Voy a Inicio
+	When Ingreso "BECA"
+		And Ingreso "DE"
+	Then Veo "Puntaje palabra: 3"
+	And Veo "Puntaje acumulado: 16"
