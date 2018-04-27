@@ -18,7 +18,8 @@ Scenario: Verificar letra no valida
 Scenario: Verificar palabra valida
 	Given Voy a Inicio
 	When Ingreso "BECA"
-	Then Veo "Puntaje: 13"
+	Then Veo "Puntaje palabra: 13"
+	And Veo "Puntaje acumulado: 20"
 
 Scenario: Verificar palabra no valida
 	Given Voy a Inicio
