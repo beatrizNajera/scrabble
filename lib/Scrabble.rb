@@ -10,10 +10,13 @@ class Scrabble
 	end
 
 	def verificarPalabraIngresada
-		if @palabra == "BEA"
-			return true
-		else
-			return false
+		letrasIngresadas = @palabra.scan /\w/
+		letrasIngresadas.each do |letra|
+			contieneLetra = obtenerLetrasIniciales.include? letra
+			if contieneLetra == false
+				return false
+			end
 		end
+		return true
 	end
 end
