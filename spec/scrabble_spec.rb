@@ -60,4 +60,13 @@ describe "Scrabble" do
 		puntaje.should == -1
   end
 
+  it "capturar palabra valida bea" do
+		scrabble = Scrabble.new
+		scrabble.capturarPalabra "bea"
+		resultado = scrabble.verificarPalabraIngresada
+		puntaje = scrabble.obtenerPuntaje
+  	resultado.should == true
+		puntaje.should == 10
+  end
+
 end

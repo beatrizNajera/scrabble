@@ -8,7 +8,7 @@ class Scrabble
 		@letrasIniciales.join " "
   end
 	def capturarPalabra palabra
-		@palabra = palabra
+		@palabra = palabra.upcase
 	end
 
 	def verificarPalabraIngresada
