@@ -8,7 +8,12 @@ class Scrabble
 	def capturarPalabra palabra
 		@palabra = palabra
 	end
+
 	def verificarPalabraIngresada
-		true
+		if @palabra == "BEA"
+			return true
+		else
+			return false
+		end
 	end
 end

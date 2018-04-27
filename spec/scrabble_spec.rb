@@ -12,4 +12,11 @@ describe "Scrabble" do
   	resultado.should == true
   end
 
+	it "capturar palabra invalida" do
+		scrabble = Scrabble.new
+		scrabble.capturarPalabra "ARBOL"
+		resultado = scrabble.verificarPalabraIngresada
+  	resultado.should == false
+  end
+
 end
