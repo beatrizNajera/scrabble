@@ -3,6 +3,7 @@ Feature: Scrabble de 5 letras
 Scenario: Inicio
 	Given Voy a Inicio
 	Then Veo "A B C D E"
+	And Veo "1 8 5 3 1"
 
 Scenario: Captura palabra
 	Given Voy a Inicio

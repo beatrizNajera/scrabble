@@ -4,6 +4,7 @@ require "./lib/Scrabble.rb"
 get '/' do
 		@@scrabble = Scrabble.new
   	@letrasIniciales=@@scrabble.obtenerLetrasIniciales
+  	@valorLetras = "1 8 5 3 1"
 		erb :scrabble 
 end
 
