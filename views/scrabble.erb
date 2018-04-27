@@ -1,10 +1,30 @@
-<P>JUEGO SCRABBLE - LOS LETRADOS</P>
-<h1><%= @letrasIniciales %> </h1>
-<h2><%= @valorLetras %> </h2>
-<form method="post" action="/validarPalabra">
-<input type="text" name="palabraIngresada">
-<input type="submit" value="Confirmar Palabra">
-</form>
-<%= @palabraIngresada%> - <%= @mensaje %>
+<html>
+<head>
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<link rel="stylesheet" href="https://storage.gogoleapis.com/code.getmdl.io/1.0.6/material.indigo-pink.min.css" />
+<script src="https://storage.gogoleapis.com/code.getmdl.io/1.0.6/material.min.js"> </script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
 
+</head>
+<body>
+	<div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer">
+		<div class="mdl-layout__drawer">
+			<span class="mdl-layout-tittle">JUEGO SCRABBLE - LOS LETRADOS</span>
+		</div>
+		<main class="mdl-layout__content">
+			<div class="page-content">
+				<h1><%= @letrasIniciales %> </h1>
+				<h2><%= @valorLetras %> </h2>
 
+				A<sub>1</sub> B<sub>8</sub> C<sub>3</sub> D<sub>2</sub> E<sub>1</sub>
+				<form method="post" action="/validarPalabra">
+				<input type="text" name="palabraIngresada">
+				<input type="submit" value="Confirmar Palabra">
+				</form>
+				<%= @palabraIngresada%> - <%= @mensaje %>
+			</div>
+		</main>
+	</div>
+</body>
+
+</html>
