@@ -89,4 +89,25 @@ describe "Scrabble" do
 		puntaje.should == -1
   end
 
+	it "cuando ingreso BEA muestra 10 y luego BECA acumula puntaje y muestra 23" do
+		scrabble = Scrabble.new
+		scrabble.capturarPalabra "BEA"
+		resultado1 = scrabble.verificarPalabraIngresada
+		motivoPalabraNoValida1 = scrabble.obtenerMotivoPalabraNoValida
+		puntaje1 = scrabble.obtenerPuntaje
+		
+		scrabble.capturarPalabra "BECA"
+		resultado2 = scrabble.verificarPalabraIngresada
+		motivoPalabraNoValida2 = scrabble.obtenerMotivoPalabraNoValida
+		puntaje2 = scrabble.obtenerPuntaje
+
+  	resultado1.should == true
+		motivoPalabraNoValida1 == ""
+		puntaje1.should == 10
+
+		resultado2.should == true
+		motivoPalabraNoValida2 == ""
+		puntaje2.should == 23
+  end
+
 end

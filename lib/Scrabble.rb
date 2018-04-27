@@ -1,10 +1,10 @@
 class Scrabble
 
 	def initialize 
-		@palabra = ""
+		@palabras = []
 		@puntajes = [1,8,3,2,1]
 		@letrasIniciales = %w{A B C D E}
-		@palabrasValidas = %w{BEA CAE CABE CEDA CEBA DA DEBA DEA BECA}
+		@palabrasValidas = %w{BEA CAE CABE CEDA CEBA DA DEBA DEA BECA DE}
 		@usoCorrectamenteSetDeLetras = false
 		@usoCorrectamenteCantidadDeSetDeLetras = false
 		@existePalabraIngresada = false
@@ -19,11 +19,11 @@ class Scrabble
   end
 
 	def capturarPalabra palabra
-		@palabra = palabra.upcase
+		@palabras << palabra.upcase
 	end
 
 	def verificarPalabraIngresada
-		letrasIngresadas = @palabra.scan /\w/
+		letrasIngresadas = @palabras[-1].scan /\w/
 		letrasIniciales = obtenerLetrasIniciales.scan /\w/
 
 		
@@ -59,7 +59,7 @@ class Scrabble
 	end
 
 	def verificarSiPalabraIngresadaExiste
-		cantidadEncontrada = @palabrasValidas.count(@palabra)
+		cantidadEncontrada = @palabrasValidas.count(@palabras[-1])
 		if cantidadEncontrada > 0
 			return true
 		else
@@ -83,11 +83,13 @@ class Scrabble
 		if verificarPalabraIngresada == false
 			return -1
 		end
-		letrasIngresadas = @palabra.scan /\w/
 		puntaje = 0
-		letrasIngresadas.each do |letra|
-			indiceLetra = @letrasIniciales.index letra
-			puntaje += @puntajes[indiceLetra]
+		@palabras.each do |palabra|
+			letrasIngresadas = palabra.scan /\w/
+			letrasIngresadas.each do |letra|
+				indiceLetra = @letrasIniciales.index letra
+				puntaje += @puntajes[indiceLetra]
+			end
 		end
 		return puntaje
 	end
