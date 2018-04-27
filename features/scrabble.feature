@@ -18,6 +18,6 @@ Scenario: Verificar palabra no valida
 Scenario: Verificar palabra valida
 	Given Voy a Inicio
 	When Ingreso "BECA"
-	Then Veo "Ok"
+	Then Veo "Puntaje: 13"
 
 

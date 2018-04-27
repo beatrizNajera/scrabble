@@ -12,8 +12,9 @@ post '/validarPalabra' do
 	@palabraIngresada = params["palabraIngresada"]
 	@@scrabble.capturarPalabra params["palabraIngresada"]
 	@letrasIniciales=@@scrabble.obtenerLetrasIniciales
+  @puntaje=@@scrabble.obtenerPuntaje
 	if @@scrabble.verificarPalabraIngresada
-		@mensaje = "Ok"
+		@mensaje = "Puntaje: #{@puntaje}" 
 	else
     @mensaje = "No puede utilizar mas letras de las disponibles"
 	end
