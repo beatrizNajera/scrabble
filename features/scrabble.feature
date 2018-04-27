@@ -10,7 +10,7 @@ Scenario: Captura palabra
 	When Ingreso "BEA"
 	Then Veo "BEA"
 
-Scenario: Verificar palabra no valida
+Scenario: Verificar letra no valida
 	Given Voy a Inicio
 	When Ingreso "ARBOL"
 	Then Veo "No puede utilizar mas letras de las disponibles"
@@ -20,4 +20,7 @@ Scenario: Verificar palabra valida
 	When Ingreso "BECA"
 	Then Veo "Puntaje: 13"
 
-
+Scenario: Verificar palabra no valida
+	Given Voy a Inicio
+	When Ingreso "ABCE"
+	Then Veo "La palabra no existe en la RAE"

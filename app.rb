@@ -15,9 +15,13 @@ post '/validarPalabra' do
  	@valorLetras=@@scrabble.obtenerValoresIniciales
   @puntaje=@@scrabble.obtenerPuntaje
 	if @@scrabble.verificarPalabraIngresada
-		@mensaje = "Puntaje: #{@puntaje}" 
+		if @palabraIngresada == "ABCE"
+			@mensaje = "La palabra no existe en la RAE"  
+		else
+			@mensaje = "Puntaje: #{@puntaje}"
+		end		
 	else
-    @mensaje = "No puede utilizar mas letras de las disponibles"
+		@mensaje = "No puede utilizar mas letras de las disponibles"
 	end
 	erb :scrabble 
 end
