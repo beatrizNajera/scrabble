@@ -14,3 +14,8 @@ Scenario: Verificar palabra no valida
 	When Ingreso "ARBOL"
 	Then Veo "La palabra contiene letra no valida"
 
+Scenario: Verificar palabra valida
+	Given Voy a Inicio
+	When Ingreso "BECA"
+	Then Veo "Ok"
+
