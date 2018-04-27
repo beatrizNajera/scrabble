@@ -42,6 +42,7 @@ describe "Scrabble" do
 		scrabble = Scrabble.new
 		scrabble.capturarPalabra "BEA"
 		resultado = scrabble.verificarPalabraIngresada
+		scrabble.calcularPuntaje
 		puntaje = scrabble.obtenerPuntaje
 		motivoPalabraNoValida = scrabble.obtenerMotivoPalabraNoValida
 		motivoPalabraNoValida.should == ""
@@ -53,6 +54,7 @@ describe "Scrabble" do
 		scrabble = Scrabble.new
 		scrabble.capturarPalabra "BECA"
 		resultado = scrabble.verificarPalabraIngresada
+		scrabble.calcularPuntaje
 		puntaje = scrabble.obtenerPuntaje
   	resultado.should == true
 		puntaje.should == 13
@@ -63,6 +65,7 @@ describe "Scrabble" do
 		scrabble.capturarPalabra "ARBOL"
 		resultado = scrabble.verificarPalabraIngresada
 		motivoPalabraNoValida = scrabble.obtenerMotivoPalabraNoValida
+		scrabble.calcularPuntaje
 		puntaje = scrabble.obtenerPuntaje
   	resultado.should == false
 		motivoPalabraNoValida.should == "No puede utilizar mas letras de las disponibles"
@@ -73,6 +76,7 @@ describe "Scrabble" do
 		scrabble = Scrabble.new
 		scrabble.capturarPalabra "bea"
 		resultado = scrabble.verificarPalabraIngresada
+		scrabble.calcularPuntaje
 		puntaje = scrabble.obtenerPuntaje
   	resultado.should == true
 		puntaje.should == 10
@@ -83,6 +87,7 @@ describe "Scrabble" do
 		scrabble.capturarPalabra "BCA"
 		resultado = scrabble.verificarPalabraIngresada
 		motivoPalabraNoValida = scrabble.obtenerMotivoPalabraNoValida
+		scrabble.calcularPuntaje
 		puntaje = scrabble.obtenerPuntaje
   	resultado.should == false
 		motivoPalabraNoValida == "La palabra no existe en la RAE"
@@ -94,20 +99,26 @@ describe "Scrabble" do
 		scrabble.capturarPalabra "BEA"
 		resultado1 = scrabble.verificarPalabraIngresada
 		motivoPalabraNoValida1 = scrabble.obtenerMotivoPalabraNoValida
+		scrabble.calcularPuntaje
 		puntaje1 = scrabble.obtenerPuntaje
+		puntajeAcumulado1 = scrabble.obtenerPuntajeAcumulado
 		
 		scrabble.capturarPalabra "BECA"
 		resultado2 = scrabble.verificarPalabraIngresada
 		motivoPalabraNoValida2 = scrabble.obtenerMotivoPalabraNoValida
+		scrabble.calcularPuntaje
 		puntaje2 = scrabble.obtenerPuntaje
+		puntajeAcumulado2 = scrabble.obtenerPuntajeAcumulado
 
   	resultado1.should == true
 		motivoPalabraNoValida1 == ""
 		puntaje1.should == 10
+		puntajeAcumulado1.should == 10
 
 		resultado2.should == true
 		motivoPalabraNoValida2 == ""
-		puntaje2.should == 23
+		puntaje2.should == 13
+		puntajeAcumulado2 == 23
   end
 
 end

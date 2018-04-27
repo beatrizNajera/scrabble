@@ -8,6 +8,7 @@ class Scrabble
 		@usoCorrectamenteSetDeLetras = false
 		@usoCorrectamenteCantidadDeSetDeLetras = false
 		@existePalabraIngresada = false
+		@puntaje = []
 	end
 
 	def obtenerLetrasIniciales
@@ -79,19 +80,29 @@ class Scrabble
 		end
 	end
 
-	def obtenerPuntaje
-		if verificarPalabraIngresada == false
-			return -1
-		end
-		puntaje = 0
-		@palabras.each do |palabra|
-			letrasIngresadas = palabra.scan /\w/
+	def calcularPuntaje
+		if verificarPalabraIngresada
+			puntajeActual = 0
+			letrasIngresadas = @palabras[-1].scan /\w/
 			letrasIngresadas.each do |letra|
 				indiceLetra = @letrasIniciales.index letra
-				puntaje += @puntajes[indiceLetra]
+				puntajeActual += @puntajes[indiceLetra]
 			end
-		end
-		return puntaje
+			@puntaje << puntajeActual	
+		else
+			@puntaje << -1
+		end		
 	end
 
+	def obtenerPuntaje
+		return @puntaje[-1]
+	end
+
+	def obtenerPuntajeAcumulado
+		puntajeAcumulado = 0
+		@puntaje.each do |puntajeIteacion|		
+			puntajeAcumulado += puntajeIteacion
+		end
+		return puntajeAcumulado
+	end
 end

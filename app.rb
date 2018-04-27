@@ -13,6 +13,7 @@ post '/validarPalabra' do
 	@@scrabble.capturarPalabra params["palabraIngresada"]
 	@letrasIniciales=@@scrabble.obtenerLetrasIniciales
  	@valorLetras=@@scrabble.obtenerValoresIniciales
+	@@scrabble.calcularPuntaje
   @puntaje=@@scrabble.obtenerPuntaje
 	if @@scrabble.verificarPalabraIngresada
 			@mensaje = "Puntaje palabra: #{@puntaje}" + " - " + "Puntaje acumulado: 20" 
